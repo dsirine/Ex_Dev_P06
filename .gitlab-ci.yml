@@ -1,0 +1,16 @@
+stages:
+  - install_dependencies
+  - tests
+  - deploy_recette
+  - deploy_production
+
+install_dependencies_job:
+  stage: install_dependencies
+  script:
+    - composer install -n 
+
+test_job:
+  stage: test
+  script:
+    - php bin/console server:start
+    - ./bin/phpunit
